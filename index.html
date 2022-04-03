@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7ac1ee141e.js" crossorigin="anonymous"></script>
+    <title>Gallery - 2022</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <section class="cabecalho">
+        <nav class="cabecalho-menu">
+            <a class="cabecalho-menu-item" href="https://btxfleurs.github.io/aboutbts/">About BTS</a>
+            <a class="cabecalho-menu-item" href="https://btxfleurs.github.io/career/">Career</a>
+            <a class="cabecalho-menu-item" href="https://btxfleurs.github.io/gallery/"><b>Gallery</b></a>
+            <a class="cabecalho-menu-item" href="https://btxfleurs.github.io/members/">Members</a>
+        </nav>
+    </section>
+
+    <section class="teste">
+    <div class="slide">
+        <div class="slides">
+
+            <div id="voltar" class="btn">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div id="next" class="btn">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+
+            <div id="atual" class="imagem">
+                <img src="foto1.svg" alt="">
+            </div>
+            <div id="atual" class="imagem">
+                <img src="foto2.svg" alt="">
+            </div>
+            <div id="atual" class="imagem">
+                <img src="foto3.svg" alt="">
+            </div>
+            <div id="atual" class="imagem">
+                <img src="foto4.svg" alt="">
+            </div>
+            <div id="atual" class="imagem">
+                <img src="foto5.svg" alt="">
+            </div>
+            <div id="atual" class="imagem">
+                <img src="foto6.svg" alt="">
+            </div>
+            <div id="atual" class="imagem">
+                <img src="foto7.svg" alt="">
+            </div>
+            <div id="atual" class="imagem">
+                <img src="foto8.svg" alt="">
+            </div>
+            <div id="atual" class="imagem">
+                <img src="foto9.svg" alt="">
+            </div>
+            <div id="atual" class="imagem">
+                <img src="foto10.svg" alt="">
+            </div>
+        </div>
+
+        <div class="balls">
+        </div>
+    </div>
+    </section>
+
+    <script>
+        var balls = document.querySelector('.balls')
+        var quant = document.querySelectorAll('.slides .imagem')
+        var atual = 0
+        var imagem = document.getElementById('atual')
+        var next = document.getElementById('next')
+        var voltar = document.getElementById('voltar')
+
+        for(let i=0; i < quant.length; i++){
+            var div = document.createElement('div')
+            div.id = i
+            balls.appendChild(div)
+        }
+
+        document.getElementById('0').classList.add('imgAtual')
+
+        var pos = document.querySelectorAll('.balls div')
+
+        for(let i=0; i< pos.length; i++){
+            pos[i].addEventListener('click',()=>{
+                atual = pos[i].id
+                slide()
+            })
+        }
+
+        next.addEventListener('click', ()=>{
+            atual--
+            slide()
+        })
+
+        voltar.addEventListener('click', ()=>{
+            atual++
+            slide()
+        })
+
+        function slide(){
+            if(atual >= quant.length){
+                atual = 0
+            }
+
+            else if(atual < 0){
+                atual = quant.length-1
+            }
+
+            document.querySelector('.imgAtual').classList.remove('imgAtual')
+            imagem.style.marginLeft = -927*atual+'px'
+            document.getElementById(atual).classList.add('imgAtual')
+        }
+        slide()
+    </script>
+    
+</body>
+</html>
